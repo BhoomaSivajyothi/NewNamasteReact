@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS counter</title>
+    <link href="./counter.css" rel="Stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div id="counter"><h2>Counter</h2></div>
+        <div id="display"><h1>0</h1></div>
+        <div id="buttons">
+            <button id="decrease" onclick="Decrease()">Decrease</button>
+            <button id="reset" onclick="Reset()">Rest</button>
+            <button id="increase" onclick="Increase()">Increase</button>  
+        </div>     
+    </div>
+    <script>
+        let count=0;
+        let  displayvalue=document.getElementById("display")
+        function Decrease(){
+            if(count==0){
+                count=0;
+            }
+            else{
+                count= count-1; 
+            }
+             
+             displayvalue.outerHTML=count
+        }
+        function Reset(){
+
+             count= 0;
+             displayvalue.innerHTML=count
+        }
+        function Increase(){
+             count=count+1;
+             displayvalue.outerHTML=count
+        }
+    </script>
+
+</body>
+</html>
+
+
