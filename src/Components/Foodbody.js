@@ -6,7 +6,7 @@ import { resList } from "../utils/Foodmock";
 export const Body = () => {
   const [listofRestaurants, setlistofRestaurants] = useState([]);
   const [searchList,setserachList]=useState("");
-  
+  const [FilterItem,setFilterItems]=useState([]);
   useEffect(() => {
     fetchData();
   }, []);
@@ -19,6 +19,8 @@ export const Body = () => {
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    setFilterItems( jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      ?.restaurants)
   };
 
 
@@ -33,7 +35,7 @@ export const Body = () => {
       <input type="text" value={searchList} onChange={(e)=>{setserachList(e.target.value)}}></input>
       <button className="search" onClick={()=>{
         const filteritems =listofRestaurants?.filter((items)=>{return items?.info?.name.toLowerCase().includes(searchList.toLowerCase())})
-        setlistofRestaurants(filteritems)
+        setFilterItems(filteritems)
       }}>Search</button>
         
       <button
@@ -42,14 +44,14 @@ export const Body = () => {
           const data = listofRestaurants?.filter((res) => {
             return res?.info?.avgRating > 4.2;
           });
-          setlistofRestaurants(data);
+          setFilterItems(data);
           
         }}
       >
         Test filter data
       </button>
       <div className="res-container">
-        {listofRestaurants?.map((restaurant) => (
+        {FilterItem?.map((restaurant) => (
           <Card key={restaurant?.info?.id} resData={restaurant} />
         ))}
       </div>
