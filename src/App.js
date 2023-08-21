@@ -6,7 +6,9 @@ import { Food, Foodheader } from "./Components/Foodheader";
 
 
 const App = () =>{
-    <Food/>
+    <Food/>,
+    <Fakestoreapi/>
+
     
 }
 
