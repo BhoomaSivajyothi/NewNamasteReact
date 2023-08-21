@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../Components/food.css"
 export const Fakestoreapi = () => {
@@ -284,16 +284,21 @@ export const Fakestoreapi = () => {
         )
     }
     const Body = () => {
+      const [filterdata , setfilterdata]=useState(reslist)
+      const filtereddata=()=>{
+        let arr = reslist.filter((res)=>res.rating.count>400)
+        setfilterdata(arr)
+      }
+
       return(
         <div className="body">
-          <div className="search">
-             search
-          </div>
+          <button className="search"  onClick={filtereddata}> filer the data</button>
+          
           <div className="res-container">
         {/* <Card Resdata={reslist[0]}></Card>  */}
         
         {
-          reslist.map((store ,key)=><Card Resdata={store} key={store.id}/>)
+          filterdata.map((store ,key)=><Card Resdata={store} key={store.id}/>)
         }
           </div>
         </div>

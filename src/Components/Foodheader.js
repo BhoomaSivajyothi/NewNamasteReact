@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../Components/food.css";
 import {LOGO_URL} from "../utils/Foodcontants"
@@ -14,6 +14,8 @@ export const Food = () => {
 
 
 const Header = () =>{
+  const[isLogin,setIsLogin]=useState(false)
+      
     return (
       <div className='header'>
         
@@ -25,9 +27,14 @@ const Header = () =>{
             <li> <a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">contact-us</a></li>
-            <li><a href="#">cart</a></li> 
+            <li><a href="#">cart</a></li>
+            <button className="log-in" onClick={()=>{
+              setIsLogin((!isLogin))
+            }}>{isLogin?"logout":"login"}</button>
           </ul>
+         
         </div>
+        
       </div>
     )
 }
