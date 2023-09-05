@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./food.css";
 import { Card } from "./Foodcard";
 import { resList } from "../utils/Foodmock";
+import { Link } from "react-router-dom";
+import { Shimmer } from "./Shimmer";
 export const Body = () => {
   const [listofRestaurants, setlistofRestaurants] = useState([]);
   const [searchList,setserachList]=useState("");
@@ -23,13 +25,12 @@ export const Body = () => {
       ?.restaurants)
   };
 
-
   // if(listofRestaurants?.length===0){
   //   return<div className="loader"></div>
   // }
 
   return listofRestaurants?.length === 0 ? (
-    <div className="loader"></div>
+   <div className="loader"></div>
   ) : (
     <div className="body">
       <input type="text" value={searchList} onChange={(e)=>{setserachList(e.target.value)}}></input>
@@ -52,7 +53,7 @@ export const Body = () => {
       </button>
       <div className="res-container">
         {FilterItem?.map((restaurant) => (
-          <Card key={restaurant?.info?.id} resData={restaurant} />
+          <Link to={"/Restaurant/"+ restaurant?.info?.id}><Card key={restaurant?.info?.id} resData={restaurant} /></Link>
         ))}
       </div>
     </div>

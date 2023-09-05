@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "../Components/food.css";
 import {LOGO_URL} from "../utils/Foodcontants"
 import { Body } from "./Foodbody";
+import { Link } from "react-router-dom";
 export const Food = () => {
   return (
     <div>
@@ -13,7 +14,7 @@ export const Food = () => {
 }
 
 
-const Header = () =>{
+ export const Header = () =>{
   const[isLogin,setIsLogin]=useState(false)
       
     return (
@@ -24,10 +25,10 @@ const Header = () =>{
         </div>
         <div className='nav-items'>
           <ul>
-            <li> <a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">contact-us</a></li>
-            <li><a href="#">cart</a></li>
+            <li><Link to="/">Home</Link> </li>
+            <li><Link to="/About">About</Link></li>
+            <li><Link to="/Contact">contact-us</Link></li>
+            <li>cart</li>
             <button className="log-in" onClick={()=>{
               setIsLogin((!isLogin))
             }}>{isLogin?"logout":"login"}</button>
