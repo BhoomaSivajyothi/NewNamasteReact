@@ -5,9 +5,10 @@ import { Card } from "./Foodcard";
 import { resList } from "../utils/Foodmock";
 import { Link } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
 export const Body = () => {
   const [listofRestaurants, setlistofRestaurants] = useState([]);
-  const [searchList,setserachList]=useState("");
+  const [searchList,setserachList]=useState(" ");
   const [FilterItem,setFilterItems]=useState([]);
   useEffect(() => {
     fetchData();
@@ -28,19 +29,22 @@ export const Body = () => {
   // if(listofRestaurants?.length===0){
   //   return<div className="loader"></div>
   // }
-
-  return listofRestaurants?.length === 0 ? (
-   <div className="loader"></div>
+    const onlinestatus =useOnlineStatus("");
+  
+// if(onlinestatus===false)return (<h1 className="internet"> please check the online status</h1>);
+ return (onlinestatus===false)?(<div className="internet">please check internet connecton</div>):(
+  listofRestaurants?.length === 0 ? (
+   <Shimmer/>
   ) : (
     <div className="body">
-      <input type="text" value={searchList} onChange={(e)=>{setserachList(e.target.value)}}></input>
-      <button className="search" onClick={()=>{
+      <input type="text"  className="border-2 border-black m-4 " value={searchList} onChange={(e)=>{setserachList(e.target.value)}}></input>
+      <button className="search bg-orange-300 m-1 px-1"  onClick={()=>{
         const filteritems =listofRestaurants?.filter((items)=>{return items?.info?.name.toLowerCase().includes(searchList.toLowerCase())})
         setFilterItems(filteritems)
       }}>Search</button>
         
       <button
-        className="btn-list"
+        className="btn-list  bg-orange-300 m-1 px-1"
         onClick={() => {
           const data = listofRestaurants?.filter((res) => {
             return res?.info?.avgRating > 4.2;
@@ -51,11 +55,11 @@ export const Body = () => {
       >
         Test filter data
       </button>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {FilterItem?.map((restaurant) => (
-          <Link to={"/Restaurant/"+ restaurant?.info?.id}><Card key={restaurant?.info?.id} resData={restaurant} /></Link>
+          <Link to={"/Restaurant/"+ restaurant?.info?.id} key={restaurant?.info?.id}><Card resData={restaurant} /></Link>
         ))}
       </div>
     </div>
-  );
+  ));
 };

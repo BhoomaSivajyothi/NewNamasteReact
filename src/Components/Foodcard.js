@@ -12,11 +12,11 @@ export const Card = (props) =>{
 
      
     return (
-        <div className="res-card" style={{backgroundColor : "#f0f0f0"}}>
-            <img 
+        <div className="res-card w-52 h-96 border-spacing-0 rounded-sm  bg-gray-100 hover:bg-gray-300 m-4 p-4 hover:bg-gr" >
+            <img className="w-44  h-44"
             src={CDN_URL + cloudinaryImageId}
             alt="image" />
-            <h3>{name}</h3>
+            <h3 className="text-xl text-gray">{name}</h3>
             <h4>{cuisines.join(", ")}</h4>
             <h4>{avgRating}</h4>
             <h4>{costForTwo}</h4>

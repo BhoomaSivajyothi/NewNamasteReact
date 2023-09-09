@@ -15,7 +15,7 @@ export class About extends React.Component{
     {
         console.log(" parent-rednedr")
       return(
-         <div>
+         <div className="m-4">
            <h1>this is about us page</h1>
             <Userclass name={"sivajyothi"} location={"banglore"} email={"@jyothikesava"}/>
             

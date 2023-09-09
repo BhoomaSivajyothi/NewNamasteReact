@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./food.css"
  export class Userclass extends React.Component {
     constructor(props){
