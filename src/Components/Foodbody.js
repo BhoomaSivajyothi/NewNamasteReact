@@ -6,17 +6,21 @@ import { resList } from "../utils/Foodmock";
 import { Link } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
+import { withveglable } from "./Foodcard";
+
 export const Body = () => {
   const [listofRestaurants, setlistofRestaurants] = useState([]);
   const [searchList,setserachList]=useState(" ");
   const [FilterItem,setFilterItems]=useState([]);
+  const Restaurantcardwithveg = withveglable(Card)
+  console.log(listofRestaurants)
+  
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"  );
     const jsonData = await data.json();
     setlistofRestaurants(
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
@@ -57,7 +61,10 @@ export const Body = () => {
       </button>
       <div className="res-container flex flex-wrap">
         {FilterItem?.map((restaurant) => (
-          <Link to={"/Restaurant/"+ restaurant?.info?.id} key={restaurant?.info?.id}><Card resData={restaurant} /></Link>
+          <Link to={"/Restaurant/"+ restaurant?.info?.id} key={restaurant?.info?.id}>
+           {(restaurant?.info?.veg===true)?(<Restaurantcardwithveg resData={restaurant} />):(<Card resData={restaurant} />)} 
+            </Link>
+
         ))}
       </div>
     </div>
