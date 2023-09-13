@@ -13,8 +13,6 @@ export const Body = () => {
   const [searchList,setserachList]=useState(" ");
   const [FilterItem,setFilterItems]=useState([]);
   const Restaurantcardwithveg = withveglable(Card)
-  console.log(listofRestaurants)
-  
   useEffect(() => {
     fetchData();
   }, []);
