@@ -1,5 +1,6 @@
 import React from "react"
 import { Userclass } from "./Userclass"
+import { Usercontex } from "../utils/Usercontex"
 
 export class About extends React.Component{
     constructor(props){
@@ -16,6 +17,7 @@ export class About extends React.Component{
          <div className="m-4">
            <h1>this is about us page</h1>
             <Userclass name={"sivajyothi"} location={"banglore"} email={"@jyothikesava"}/>   
+    
          </div>
         )  
           
