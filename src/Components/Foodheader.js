@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../Components/food.css";
 import {LOGO_URL} from "../utils/Foodcontants"
 import { Body } from "./Foodbody";
 import { Link } from "react-router-dom";
+import { Usercontex } from "../utils/Usercontex";
 export const Food = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ export const Food = () => {
 
  export const Header = () =>{
   const[isLogin,setIsLogin]=useState(false)
+  const {logedin} =useContext(Usercontex)
       
     return (
       <div className='flex flex-wrap justify-between bg-pink-400'>
@@ -33,9 +35,9 @@ export const Food = () => {
             <button className="bg-white m-1 p-1 rounded" onClick={()=>{
               setIsLogin((!isLogin))
             }}>{isLogin?"logout":"login"}</button>
+            <li className="m-2 px-3">{logedin}</li>
           </ul> 
         </div>
-        
       </div>
     )
 }

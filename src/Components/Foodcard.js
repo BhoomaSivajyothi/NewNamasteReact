@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import  ReactDOM  from "react-dom/client";
 import { CDN_URL } from "../utils/Foodcontants";
+import { Usercontex } from "../utils/Usercontex";
 export  const Card = (props) =>{
+  const {logedin}=useContext(Usercontex)
+  console.log(logedin)
+  
     const {resData} = props || {}
   
     const {
@@ -9,9 +13,7 @@ export  const Card = (props) =>{
     } = resData?.info || {}
   
     const { deliveryTime } = sla
-
-     
-    return (
+     return (
         <>
         {veg && veg === true? <div>
         <label className=" border-2 border-black  absolute rounded m-2 px-1"> veg</label>
@@ -23,11 +25,12 @@ export  const Card = (props) =>{
             src={CDN_URL + cloudinaryImageId}
             alt="image" />
             <h3 className="text-xl text-gray">{name}</h3>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRating}</h4>
-            <h4>{costForTwo}</h4>
-            <h4>{deliveryTime}</h4>
-            <h4>{props.label}</h4>
+            <h4 className="text-sm">{cuisines.join(", ")}</h4>
+            <h4 className="text-sm">{avgRating}</h4>
+            <h4 className="text-sm">{costForTwo}</h4>
+            <h4 className="text-sm">{deliveryTime}</h4>
+            <h4 className="text-sm">{props.label}</h4>
+            <h4 className="text-sm text-red-600">{logedin}</h4>
         </div>
         </>
     )

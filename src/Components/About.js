@@ -1,5 +1,4 @@
 import React from "react"
-
 import { Userclass } from "./Userclass"
 
 export class About extends React.Component{
@@ -10,15 +9,13 @@ export class About extends React.Component{
     componentDidMount(){
         console.log(" parent component Did mount")
     }
-    render()
-     
+    render() 
     {
         console.log(" parent-rednedr")
       return(
          <div className="m-4">
            <h1>this is about us page</h1>
-            <Userclass name={"sivajyothi"} location={"banglore"} email={"@jyothikesava"}/>
-            
+            <Userclass name={"sivajyothi"} location={"banglore"} email={"@jyothikesava"}/>   
          </div>
         )  
           

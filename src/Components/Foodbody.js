@@ -62,7 +62,6 @@ export const Body = () => {
           <Link to={"/Restaurant/"+ restaurant?.info?.id} key={restaurant?.info?.id}>
            {(restaurant?.info?.veg===true)?(<Restaurantcardwithveg resData={restaurant} />):(<Card resData={restaurant} />)} 
             </Link>
-
         ))}
       </div>
     </div>
