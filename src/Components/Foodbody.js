@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./food.css";
 import { Card } from "./Foodcard";
@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
 import { withveglable } from "./Foodcard";
+import { Usercontex } from "../utils/Usercontex";
 
 export const Body = () => {
+  const {logedin,setUsername}=useContext(Usercontex)
   const [listofRestaurants, setlistofRestaurants] = useState([]);
   const [searchList,setserachList]=useState(" ");
   const [FilterItem,setFilterItems]=useState([]);
@@ -57,6 +59,8 @@ export const Body = () => {
       >
         Test filter data
       </button>
+       <label className="m-2">Username:</label>
+       <input type="text" className="border-black border-2" value={logedin} onChange={(e)=>setUsername(e.target.value)}></input>
       <div className="res-container flex flex-wrap">
         {FilterItem?.map((restaurant) => (
           <Link to={"/Restaurant/"+ restaurant?.info?.id} key={restaurant?.info?.id}>

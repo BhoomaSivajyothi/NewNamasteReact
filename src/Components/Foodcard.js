@@ -4,8 +4,7 @@ import { CDN_URL } from "../utils/Foodcontants";
 import { Usercontex } from "../utils/Usercontex";
 export  const Card = (props) =>{
   const {logedin}=useContext(Usercontex)
-  console.log(logedin)
-  
+
     const {resData} = props || {}
   
     const {

@@ -14,11 +14,20 @@ export class About extends React.Component{
     {
         console.log(" parent-rednedr")
       return(
+        
          <div className="m-4">
-           <h1>this is about us page</h1>
-            <Userclass name={"sivajyothi"} location={"banglore"} email={"@jyothikesava"}/>   
-    
+            <div className="m-2">
+            <h1>This is logedin</h1>
+            <Usercontex.Consumer>
+            {({logedin})=><h1>{logedin}</h1>}
+           </Usercontex.Consumer>
+            </div>
+            <div className="m-2">
+            <h1>this is about us page</h1>
+            <Userclass name={"sivajyothi"} location={"banglore"} email={"@jyothikesava"}/>
+            </div>   
          </div>
+
         )  
           
     }
