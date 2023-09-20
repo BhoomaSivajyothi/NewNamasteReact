@@ -5,6 +5,7 @@ import {LOGO_URL} from "../utils/Foodcontants"
 import { Body } from "./Foodbody";
 import { Link } from "react-router-dom";
 import { Usercontex } from "../utils/Usercontex";
+import { useSelector } from "react-redux";
 export const Food = () => {
   return (
     <div>
@@ -16,8 +17,10 @@ export const Food = () => {
 
 
  export const Header = () =>{
+  const cartitems= useSelector((store)=>store.cart.items)
   const[isLogin,setIsLogin]=useState(false)
   const {logedin} =useContext(Usercontex)
+  
       
     return (
       <div className='flex flex-wrap justify-between bg-pink-400'>
@@ -31,7 +34,7 @@ export const Food = () => {
             <li className="m-2 px-3"><Link to="/About">About</Link></li>
             <li className="m-2 px-3"><Link to="/Contact">contact-us</Link></li>
             <li className="m-2 px-3"><Link to="/Grocery">Gerocery</Link></li>
-            <li className="m-2 px-3">cart</li>
+            <li className="m-2 px-3"><Link to="/Cart">Cart:({cartitems.length}items)</Link></li>
             <button className="bg-white m-1 p-1 rounded" onClick={()=>{
               setIsLogin((!isLogin))
             }}>{isLogin?"logout":"login"}</button>

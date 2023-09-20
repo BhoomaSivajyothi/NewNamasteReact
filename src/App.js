@@ -11,6 +11,9 @@ import {Contact} from "./Components/Contact";
 import { RestaurantMenu } from "./Components/RestaurantMenu";
 import React,{ lazy, Suspense} from "react";
 import { Usercontex } from "./utils/Usercontex";
+import { AppStore } from "./utils/Appstore";
+import { Provider } from "react-redux";
+import { Cart } from "./Components/Cart";
 const Grocery = lazy(()=> import ("./Components/Grocery"))
 
 const AppLayout = () =>{
@@ -24,10 +27,13 @@ useEffect(()=>{
 
    return(
     <div className="app">
+    <Provider store={AppStore}>
     <Usercontex.Provider value={{logedin: Username ,setUsername}}>
       <Header/>
        <Outlet/>
     </Usercontex.Provider>
+    </Provider>
+   
     </div>
     
    );  
@@ -58,6 +64,10 @@ const appRouter=createBrowserRouter([
      {
       path:"/Grocery",
       element:<Suspense fallback={<h1>hhj</h1>}><Grocery/></Suspense>
+    },
+    {
+      path:"/Cart",
+      element:<Cart/>
     }
     ],
       errorElement:<ErrMsg/>
