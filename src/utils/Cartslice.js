@@ -8,7 +8,7 @@ import { createSlice } from "@reduxjs/toolkit"
     reducers:{
         addItem:( state ,action)=>{
             state.items.push(action.payload)
-
+        
         },
         RemoveItems: (state,action)=>{
             const deleteitem=state?.items?.filter((cartitem)=>cartitem.card.info.id !== action.payload.card.info.id)
