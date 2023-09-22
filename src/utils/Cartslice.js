@@ -3,11 +3,24 @@ import { createSlice } from "@reduxjs/toolkit"
   const CartSlice=createSlice({
     name:"cart",
     initialState:{
-        items:[]
+        items:[],
+       
+    
     },
     reducers:{
         addItem:( state ,action)=>{
-            state.items.push(action.payload)
+          const findindex=state.items.findIndex((finditem)=>(finditem.card.info.id===action.payload.card.info.id))
+         if(findindex >=0){
+            state.items[findindex].cartQuantity+=1;
+          
+           
+         }
+         else{
+            const cartitems=({...action.payload,cartQuantity:1})
+            state.items.push(cartitems)
+          
+         }
+           
         
         },
         RemoveItems: (state,action)=>{

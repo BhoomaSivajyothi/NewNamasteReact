@@ -17,11 +17,34 @@ export const Food = () => {
 
 
  export const Header = () =>{
-  const cartitems= useSelector((store)=>store.cart.items)
+  const cart= useSelector((store)=>store.cart)
+  // console.log(cart)
+  
+  const{items,quantity}=cart||{}
+  console.log(items,quantity)
+  const totalquantity=items.reduce((acc,items)=>acc+items.cartQuantity,0)
+  // 3) [{…}, {…}, {…}]=items
+  // 0
+  // : 
+  // {card: {…}, cartQuantity: 1}=items[0],card,cartquantity ,{items[0].cartquantity}
+  // 1
+  // : 
+  // {card: {…}, cartQuantity: 1}=items[1],card,cartquantity,{items[1].cartquantity}
+  // 2
+  // : 
+  // {card: {…}, cartQuantity: 1}=items[2],card,cartquantity,{items[2].cartquantity}
+  // length
+  // : 
+  // 3
+  // [[Prototype]]
+  // : 
+  // Array(0)
+
+
+  console.log(totalquantity)
   const[isLogin,setIsLogin]=useState(false)
   const {logedin} =useContext(Usercontex)
-  
-      
+     
     return (
       <div className='flex flex-wrap justify-between bg-pink-400'>
       
@@ -34,7 +57,7 @@ export const Food = () => {
             <li className="m-2 px-3"><Link to="/About">About</Link></li>
             <li className="m-2 px-3"><Link to="/Contact">contact-us</Link></li>
             <li className="m-2 px-3"><Link to="/Grocery">Gerocery</Link></li>
-            <li className="m-2 px-3"><Link to="/Cart">Cart:({cartitems.length}items)</Link></li>
+            <li className="m-2 px-3"><Link to="/Cart">Cart:{totalquantity}items</Link></li>
             <button className="bg-white m-1 p-1 rounded" onClick={()=>{
               setIsLogin((!isLogin))
             }}>{isLogin?"logout":"login"}</button>

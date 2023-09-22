@@ -1,10 +1,10 @@
 import { CDN_URL } from "../utils/Foodcontants"
 import Cartslice, { RemoveItems, addItem } from "../utils/Cartslice"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 
-export const ItemsList = ({items,fromcart=false})=>{
+export const ItemsList = ({items,fromcart=false},)=>{
    const dispatch= useDispatch()
   const handleadditems =(item)=>(
    // console.log(item),
@@ -18,6 +18,19 @@ export const ItemsList = ({items,fromcart=false})=>{
   )
    
    //  console.log(items)
+   const cartitems =useSelector((store)=>store.cart.items)
+   console.log(cartitems)
+   
+   const handlecartqty=(item)=>{
+    console.log(item)
+    const ccart =cartitems.find((citem)=>(citem?.card?.info?.id===item?.card?.info?.id))
+    console.log(ccart)
+     const cqty=ccart?.cartQuantity
+    console.log(cqty) 
+    return cqty
+    
+   } 
+   
     return(
         <div>
      <div>
@@ -33,7 +46,7 @@ export const ItemsList = ({items,fromcart=false})=>{
             </div>
               <div className="w-3/12" >
                 <div className="absolute ">
-               <button className= " mx-1 my-20 border-2 border-white rounded bg-black text-white" onClick={()=>handleadditems(item)}>Add +</button>
+               <button className= " mx-1 my-20 border-2 border-white rounded bg-black text-white" onClick={()=>handleadditems(item)}>Add { fromcart && handlecartqty(item)}+</button>
               { fromcart && <button className= " mx-1 my-2 border-2 border-white rounded bg-red-400 text-white" onClick={()=>handleremoveitems(item)}>Delete</button>}
                </div>
                    <img src={CDN_URL+(item?.card?.info?.imageId)} className="w-32"></img>
