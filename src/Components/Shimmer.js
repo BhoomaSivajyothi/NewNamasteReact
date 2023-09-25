@@ -1,4 +1,4 @@
-import "./food.css"
+// import "./food.css"
 export const Shimmer = () => {
     return(
         <div className="shimmer-container">

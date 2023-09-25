@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import "./food.css";
+// import "./food.css";
 import { Card } from "./Foodcard";
 import { resList } from "../utils/Foodmock";
 import { Link } from "react-router-dom";

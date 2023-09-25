@@ -12,6 +12,7 @@ export  const Card = (props) =>{
     } = resData?.info || {}
   
     const { deliveryTime } = sla
+    console.log(resData)
      return (
         <>
         {veg && veg === true? <div>

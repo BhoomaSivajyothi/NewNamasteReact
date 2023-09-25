@@ -1,19 +1,21 @@
 import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
-import "../Components/food.css";
+// import "../Components/food.css";
 import {LOGO_URL} from "../utils/Foodcontants"
 import { Body } from "./Foodbody";
 import { Link } from "react-router-dom";
 import { Usercontex } from "../utils/Usercontex";
 import { useSelector } from "react-redux";
-export const Food = () => {
-  return (
-    <div>
-       <Header></Header>
-       <Body></Body> 
-    </div>
-  )
-}
+
+
+// export const Food = () => {
+//   return (
+//     <div>
+//        <Header></Header>
+//        <Body></Body> 
+//     </div>
+//   )
+// }
 
 
  export const Header = () =>{
@@ -58,7 +60,7 @@ export const Food = () => {
             <li className="m-2 px-3"><Link to="/Contact">contact-us</Link></li>
             <li className="m-2 px-3"><Link to="/Grocery">Gerocery</Link></li>
             <li className="m-2 px-3"><Link to="/Cart">Cart:{totalquantity}items</Link></li>
-            <button className="bg-white m-1 p-1 rounded" onClick={()=>{
+            <button className="bg-white m-1 p-1 rounded " onClick={()=>{
               setIsLogin((!isLogin))
             }}>{isLogin?"logout":"login"}</button>
             <li className="m-2 px-3">{logedin}</li>
