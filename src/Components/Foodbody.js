@@ -14,6 +14,8 @@ export const Body = () => {
   const [listofRestaurants, setlistofRestaurants] = useState([]);
   const [searchList,setserachList]=useState(" ");
   const [FilterItem,setFilterItems]=useState([]);
+// console.log(searchList)
+// console.log(FilterItem)
   const Restaurantcardwithveg = withveglable(Card)
   useEffect(() => {
     fetchData();
@@ -26,7 +28,7 @@ export const Body = () => {
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    setFilterItems( jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+    setFilterItems(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
       ?.restaurants)
   };
 
@@ -40,13 +42,12 @@ export const Body = () => {
   listofRestaurants?.length === 0 ? (
    <Shimmer/>
   ) : (
-    <div className="body">
-      <input type="text"  className="border-2 border-black m-4 " value={searchList} onChange={(e)=>{setserachList(e.target.value)}}></input>
+    <div  data-testid="rescard"  className="body">
+      <input type="text" data-testid="searchinput" className="border-2 border-black m-4 " value={searchList} onChange={(e)=>{setserachList(e.target.value)}}></input>
       <button className="search bg-orange-300 m-1 px-1"  onClick={()=>{
         const filteritems =listofRestaurants?.filter((items)=>{return items?.info?.name.toLowerCase().includes(searchList.toLowerCase())})
         setFilterItems(filteritems)
-      }}>Search</button>
-        
+      }}>Search</button>  
       <button
         className="btn-list  bg-orange-300 m-1 px-1"
         onClick={() => {

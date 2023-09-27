@@ -10,7 +10,3 @@ test("should test the  card loaded" ,()=>{
   const name=screen.getByText("Soul Rasa")
   expect(name).toBeInTheDocument()
 })
-test('should load the withveglabel hoc', () => { 
-    render(<withveglable Card={MOCK_DATA}/>)
-    
- })

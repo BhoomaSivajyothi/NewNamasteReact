@@ -12,15 +12,15 @@ export  const Card = (props) =>{
     } = resData?.info || {}
   
     // const { deliveryTime } = sla
-    console.log(resData)
+    // console.log(resData)
      return (
         <>
         {veg && veg === true? <div>
         <label className=" border-2 border-black  absolute rounded m-2 px-1"> veg</label>
         </div>:<div>
         <label className=" border-2 border-black  absolute rounded m-2 px-1">non veg</label>
-        </div> }
-        <div className="res-card w-52 h-[450px] border-spacing-0 rounded-sm  bg-gray-100 hover:bg-gray-300 m-4 p-4 hover:bg-gr" >
+        </div> } 
+        <div  data-testid="rescards" className="res-card w-52 h-[450px] border-spacing-0 rounded-sm  bg-gray-100 hover:bg-gray-300 m-4 p-4 hover:bg-gr" >
             <img className="w-44  h-44"
             src={CDN_URL + cloudinaryImageId}
             alt="image" />
